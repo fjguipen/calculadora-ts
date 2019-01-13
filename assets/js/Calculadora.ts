@@ -78,6 +78,7 @@ class Calculadora {
     }
 
     reset(): void {
+        if (!this.state.powered){return}
         this.display.updateDisplay("0");
         this.state.operation = "";
     }
