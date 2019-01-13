@@ -52,7 +52,22 @@ class Calculadora {
                 this.calcular();
                 this.state.end = true;
                 break;
-            default:
+            case "dot":
+                try {
+                    if (this.display.getValue().match(/\./)) {
+                        return;
+                    }
+                    if (!isNaN(Number(this.state.operation.slice(-1)))) {
+                        this.state.end = false;
+                        this.state.operation += value;
+                        this.display.updateDisplay(this.display.getValue() + value);
+                    }
+                }
+                catch (err) {
+                    console.log(err.message);
+                }
+                break;
+            case "number":
                 if (this.state.operation === "0" || this.state.operation.match(/\D0/)) {
                     return;
                 }
@@ -61,11 +76,13 @@ class Calculadora {
                     this.display.clearDisplay();
                     this.state.end = false;
                 }
-                if (isNaN(Number(this.state.operation.slice(-1)))) {
+                if (isNaN(Number(this.state.operation.slice(-1))) && this.state.operation.slice(-1) != ".") {
                     this.display.clearDisplay();
                 }
                 this.state.operation += value;
                 this.display.updateDisplay(this.display.getValue() === "0" ? "" + value : this.display.getValue() + value);
+                break;
+            default:
                 break;
         }
     }
