@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- CHARSET -->
+    <meta charset="utf8">
+    <!-- ESTILOS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- JS -->
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/Calculadora.js"></script>
+    <script type="text/javascript" src="assets/js/Display.js"></script>
+</head>
+<body>
+    <div id="Calculadora">
+        <div id="display">
+
+        </div>
+        <div id="keyboard-wrapper">
+            <div class="row">
+                <div class="key" onclick="power()">ON/OFF</div>
+                <div class="key" onclick="reset()">C</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">(</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">)</div>
+            </div>
+            <div class="row">
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">7</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">8</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">9</div>
+                <div class="key" data-key="" data-type="sign" onclick="mousePressHandle(this)">/</div>
+            </div>
+            <div class="row">
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">4</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">5</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">6</div>
+                <div class="key" data-key="" data-type="sign" onclick="mousePressHandle(this)">*</div>
+            </div>
+            <div class="row">
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">1</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">2</div>
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">3</div>
+                <div class="key" data-key="" data-type="sign" onclick="mousePressHandle(this)">-</div>
+            </div>
+            <div class="row">
+                <div class="key" data-key="" data-type="number" onclick="mousePressHandle(this)">0</div>
+                <div class="key" data-key="" data-type="sign" onclick="addDot()">.</div>
+                <div class="key" data-key="" data-type="result" onclick="mousePressHandle(this)">=</div>
+                <div class="key" data-key="" data-type="sign" onclick="mousePressHandle(this)">+</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
