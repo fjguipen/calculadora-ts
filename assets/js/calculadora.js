@@ -1,102 +1,59 @@
 class Calculadora {
     constructor(displayID) {
         this.state = {
+            data: ["", "", ""],
+            pos: 0,
             powered: false,
-            operation: "",
-            end: false,
-        };
-        this.power = () => {
-            if (this.state.powered) {
-                this.turnOff();
-            }
-            else {
-                this.turnOn();
-            }
-            this.state.powered = !this.state.powered;
         };
         this.display = new Display(displayID);
-        this.state.operation = "";
+    }
+    power() {
+        if (this.state.powered) {
+            this.turnOff();
+        }
+        else {
+            this.turnOn();
+        }
+    }
+    reset() {
+        this.state.data = ["", "", ""];
+        this.state.pos = 0;
+        this.display.updateDisplay("");
+    }
+    onKeyPress(value, type) {
+        if (!this.state.powered) {
+            return;
+        }
+        console.log(this.state.data);
+        switch (type) {
+            case "number":
+                if (this.state.pos === 1) {
+                    this.state.pos++;
+                }
+                this.state.data[this.state.pos] += value;
+                this.display.updateDisplay(this.state.data[this.state.pos].toString());
+                break;
+            case "sign":
+                if (this.state.pos === 0 && this.state.data[0] != "") {
+                    this.state.pos++;
+                    this.state.data[this.state.pos] = value;
+                }
+                else if (this.state.pos === 2) {
+                    this.state.data = [eval(this.state.data.join("")), "", ""];
+                    this.display.updateDisplay(this.state.data[0]);
+                    this.state.pos = 0;
+                }
+                break;
+        }
     }
     turnOn() {
-        this.display.updateDisplay("0");
+        this.state.powered = true;
         this.display.lightOn();
     }
     turnOff() {
-        this.display.updateDisplay("");
-        this.state.operation = "";
+        this.reset();
+        this.state.powered = false;
         this.display.lightOff();
-    }
-    onKeyPress(value, type) {
-        console.log(this.state.operation);
-        if (!this.state.powered) {
-            return;
-        }
-        switch (type) {
-            case "sign":
-                if (this.state.end) {
-                    this.state.end = false;
-                }
-                if (!this.state.operation || isNaN(Number(this.state.operation.slice(-1)))) {
-                    return;
-                }
-                this.calcular();
-                this.state.operation += value;
-                break;
-            case "pow2":
-                if (this.state.operation) {
-                    this.state.operation = `Math.pow(${this.state.operation}, 2)`;
-                    this.calcular();
-                }
-                break;
-            case "result":
-                this.calcular();
-                this.state.end = true;
-                break;
-            case "dot":
-                try {
-                    if (this.display.getValue().match(/\./)) {
-                        return;
-                    }
-                    if (!isNaN(Number(this.state.operation.slice(-1)))) {
-                        this.state.end = false;
-                        this.state.operation += value;
-                        this.display.updateDisplay(this.display.getValue() + value);
-                    }
-                }
-                catch (err) {
-                    console.log(err.message);
-                }
-                break;
-            case "number":
-                if (this.state.operation === "0" || this.state.operation.match(/\D0/)) {
-                    return;
-                }
-                if (this.state.end) {
-                    this.state.operation = "";
-                    this.display.clearDisplay();
-                    this.state.end = false;
-                }
-                if (isNaN(Number(this.state.operation.slice(-1))) && this.state.operation.slice(-1) != ".") {
-                    this.display.clearDisplay();
-                }
-                this.state.operation += value;
-                this.display.updateDisplay(this.display.getValue() === "0" ? "" + value : this.display.getValue() + value);
-                break;
-            default:
-                break;
-        }
-    }
-    calcular() {
-        let resultado = eval(this.state.operation);
-        this.display.updateDisplay(resultado);
-        this.state.operation = resultado.toString();
-    }
-    reset() {
-        if (!this.state.powered) {
-            return;
-        }
-        this.display.updateDisplay("0");
-        this.state.operation = "";
     }
 }
 //# sourceMappingURL=Calculadora.js.map
