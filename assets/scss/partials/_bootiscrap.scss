@@ -1,0 +1,33 @@
+@mixin d-flex(){
+    display: flex;
+    -moz-display: flex;
+    -webkit-display: flex;
+}
+
+@mixin d-flex-center(){
+    @include d-flex();
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin row(){
+    @include d-flex();
+    flex-direction:row;
+    align-items: center
+}
+
+.flex{
+    @include d-flex();
+}
+
+.flex-centered{
+    @include d-flex-center();
+}
+
+.row{
+    @include row();
+    > *{
+       flex:1; 
+    }
+}
+

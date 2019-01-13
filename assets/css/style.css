@@ -1,0 +1,108 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  /* Safari 3.1+ */
+  -moz-user-select: none;
+  /* Firefox 2+ */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Standard syntax */
+}
+
+a {
+  text-decoration: none;
+}
+a:hover, a:active, a:focus {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.flex {
+  display: flex;
+  -moz-display: flex;
+  -webkit-display: flex;
+}
+
+.flex-centered {
+  display: flex;
+  -moz-display: flex;
+  -webkit-display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  -moz-display: flex;
+  -webkit-display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.row > * {
+  flex: 1;
+}
+
+@font-face {
+  font-family: calcFont;
+  src: url("../fonts/calculator.ttf");
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#calculadora-wrapper {
+  height: 100vh;
+}
+#calculadora-wrapper #calculadora {
+  background-color: #8a8a8a;
+  padding: 30px 20px;
+}
+#calculadora-wrapper #calculadora #display {
+  padding: 8px;
+  width: 95%;
+  margin: auto;
+  height: 45px;
+  display: flex;
+  -moz-display: flex;
+  -webkit-display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: calcFont;
+  margin-bottom: 35px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+#calculadora-wrapper #calculadora #keyboard-wrapper .row {
+  justify-content: center;
+}
+#calculadora-wrapper #calculadora #keyboard-wrapper .row .key {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  -moz-display: flex;
+  -webkit-display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: #e7e7e7;
+  font-size: 15px;
+}
+#calculadora-wrapper #calculadora #keyboard-wrapper .row .key .superindice {
+  font-size: 10px;
+  margin-top: -8px;
+}
+#calculadora-wrapper #calculadora #keyboard-wrapper .row .key:hover {
+  cursor: pointer;
+}
+#calculadora-wrapper #calculadora #keyboard-wrapper .row .key:active {
+  box-shadow: 0px 0px 2px 1px #7d5e5e inset;
+}
+
+/*# sourceMappingURL=style.css.map */
