@@ -8,7 +8,7 @@ const mousePressHandle = (element) => {
     calculadora.onKeyPress(value, type);
 };
 const reset = () => {
-    calculadora.reset();
+    calculadora.reset("0");
 };
 const power = () => {
     calculadora.power();

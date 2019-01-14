@@ -11,7 +11,7 @@ const mousePressHandle = (element): void => {
 }
 
 const reset = (): void => {
-    calculadora.reset()
+    calculadora.reset("0")
 }
 const power = (): void => {
     calculadora.power()

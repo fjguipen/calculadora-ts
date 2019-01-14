@@ -16,13 +16,14 @@
     <div id="calculadora-wrapper" class="flex-centered">
         <div id="calculadora">
             <div id="display">
-
+                <span id="operator"></span>
+                <span id="value"></span>
             </div>
             <div id="keyboard-wrapper">
                 <div class="row">
                     <div class="key" onclick="power()">ON /<br>OFF</div>
                     <div class="key" onclick="reset()">C</div>
-                    <div class="key" data-key="pow" data-type="pow2" onclick="mousePressHandle(this)">x<span class="superindice">2</span></div>
+                    <div class="key" data-key="pow" data-type="sign" onclick="mousePressHandle(this)">x<span class="superindice">y</span></div>
                     <div class="key" data-key="%" data-type="sign" onclick="mousePressHandle(this)">mod</div>
                 </div>
                 <div class="row">
