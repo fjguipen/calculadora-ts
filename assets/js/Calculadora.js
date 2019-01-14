@@ -4,6 +4,7 @@ class Calculadora {
             data: ["", "", ""],
             pos: 0,
             powered: false,
+            err: false,
         };
         this.display = new Display();
     }
@@ -19,12 +20,13 @@ class Calculadora {
         if (!this.state.powered) {
             return;
         }
+        this.state.err = false;
         this.state.data = [val, "", ""];
         this.state.pos = 0;
         this.display.updateDisplay(this.state.data[0]);
     }
     onKeyPress(value, type) {
-        if (!this.state.powered) {
+        if (!this.state.powered || this.state.err) {
             return;
         }
         switch (type) {
@@ -62,6 +64,9 @@ class Calculadora {
                 }
                 break;
             case "dot":
+                if (this.state.pos === -1) {
+                    this.state.pos = 0;
+                }
                 if (!this.state.data[this.state.pos].match(/\./)) {
                     this.state.data[this.state.pos] += value;
                     this.display.updateDisplay(this.state.data[this.state.pos]);
@@ -77,6 +82,16 @@ class Calculadora {
         }
     }
     calcular(value = "") {
+        this.state.data.forEach(e => {
+            if (e === "Infinity" || e === "NaN") {
+                console.log("Entra1");
+                this.display.updateDisplay("error");
+                this.state.err = true;
+            }
+        });
+        if (this.state.err) {
+            return;
+        }
         let operation = this.state.data[1];
         switch (operation) {
             case "pow":
@@ -90,6 +105,7 @@ class Calculadora {
     }
     turnOn() {
         this.state.powered = true;
+        this.state.err = false;
         this.state.data = ["0", "", ""];
         this.display.updateDisplay(this.state.data[0]);
         this.display.lightOn();
