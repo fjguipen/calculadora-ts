@@ -6,7 +6,7 @@ class Calculadora {
     }
     display: Display;
 
-    constructor(displayID) {
+    constructor() {
         this.state = {
             data: ["", "", ""],
             pos: 0,

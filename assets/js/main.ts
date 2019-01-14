@@ -1,7 +1,7 @@
 let calculadora: Calculadora;
 
 window.onload = (): void =>{
-    calculadora = new Calculadora("#display");
+    calculadora = new Calculadora();
 }
 
 const mousePressHandle = (element): void => {

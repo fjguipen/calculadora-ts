@@ -1,6 +1,6 @@
 let calculadora;
 window.onload = () => {
-    calculadora = new Calculadora("#display");
+    calculadora = new Calculadora();
 };
 const mousePressHandle = (element) => {
     let value = element.dataset.key;

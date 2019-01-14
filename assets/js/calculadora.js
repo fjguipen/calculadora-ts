@@ -1,5 +1,5 @@
 class Calculadora {
-    constructor(displayID) {
+    constructor() {
         this.state = {
             data: ["", "", ""],
             pos: 0,
