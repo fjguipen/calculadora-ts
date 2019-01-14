@@ -81,7 +81,6 @@ class Calculadora {
                 this.calcular();
                 this.state.pos = -1;
         }
-        console.log(this.state.data)
     }
     private calcular(value: string="") {
         let operation: string = this.state.data[1];

@@ -75,7 +75,6 @@ class Calculadora {
                 this.calcular();
                 this.state.pos = -1;
         }
-        console.log(this.state.data);
     }
     calcular(value = "") {
         let operation = this.state.data[1];
