@@ -1,3 +1,9 @@
+/**
+ * Clase calculadora: Es el core del modulo calculadora. Utliza la clase Display para manejar
+ * la información de salida
+ *
+ * @param state Objeto que
+ */
 class Calculadora {
     constructor() {
         this.state = {
@@ -67,7 +73,7 @@ class Calculadora {
                 if (this.state.pos === -1) {
                     this.state.pos = 0;
                 }
-                if (!this.state.data[this.state.pos].match(/\./)) {
+                if (!this.state.data[this.state.pos].match(/\./) && !this.state.data[this.state.pos].match(/Infinity|NaN/)) {
                     this.state.data[this.state.pos] += value;
                     this.display.updateDisplay(this.state.data[this.state.pos]);
                 }
@@ -84,7 +90,6 @@ class Calculadora {
     calcular(value = "") {
         this.state.data.forEach(e => {
             if (e === "Infinity" || e === "NaN") {
-                console.log("Entra1");
                 this.display.updateDisplay("error");
                 this.state.err = true;
             }
